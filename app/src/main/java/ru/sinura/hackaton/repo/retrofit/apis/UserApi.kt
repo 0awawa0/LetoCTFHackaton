@@ -11,15 +11,15 @@ import ru.sinura.hackaton.repo.retrofit.models.RegisterModel
 interface UserApi {
 
     @FormUrlEncoded
-    @Headers("Connection: close")
+    @Headers("Connection: keep-alive")
     @POST("/user/registration")
     fun userRegister(
         @Field("name") firstName: String,
         @Field("surname") lastName: String,
         @Field("email") email: String,
         @Field("password") password: String,
-        @Field("med-card") medCard: String,
-        @Field("birth-date") birth: String,
+        @Field("num_oms") medCard: String,
+        @Field("date_birth") birth: String,
         @Field("phone") phone: String,
         @Field("passport") passport: String,
         @Field("city") city: String,
@@ -27,7 +27,7 @@ interface UserApi {
     ): Call<RegisterModel>
 
     @FormUrlEncoded
-    @Headers("Connection: close")
+    @Headers("Connection: keep-alive")
     @POST("/user/login")
     fun loginUser(
         @Field("email") email: String,

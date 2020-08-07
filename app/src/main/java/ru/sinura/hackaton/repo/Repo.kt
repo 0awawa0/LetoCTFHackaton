@@ -6,8 +6,10 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import ru.sinura.hackaton.login.LoginActivity
 import ru.sinura.hackaton.repo.retrofit.apis.UserApi
 import java.net.ProtocolException
+import java.net.SocketTimeoutException
 
 class Repo private constructor() {
 
@@ -28,6 +30,8 @@ class Repo private constructor() {
         .build()
 
     private val userApi: UserApi = retrofit.create(UserApi::class.java)
+
+    var loginResponse: LoginActivity.LoginResponse? = null
 
     fun doRegister(
         firstName: String,
@@ -61,10 +65,12 @@ class Repo private constructor() {
                 if (response.isSuccessful) {
                     Log.e("Repo", response.body()?.status)
                 } else {
-                    Log.e("Repo", "Error: " + response.message())
+                    Log.e("Repo", "Error: " + response.raw().message())
                 }
             } catch (exception: ProtocolException) {
                 Log.e("Repo", "Caught protocol exception")
+            } catch (exception: SocketTimeoutException) {
+                Log.e("Repo", "Caught socket timeout exception")
             }
         }
     }
@@ -80,12 +86,22 @@ class Repo private constructor() {
             try {
                 val response = call.execute()
                 if (response.isSuccessful) {
-                    Log.e("Repo", "Status: ${response.body()?.status}\nToken: ${response.body()?.token}")
+                    GlobalScope.launch(Dispatchers.Main) {
+                        Log.e("Repo", "Status: ${response.body()?.status}\nToken: ${response.body()?.token}")
+                        loginResponse?.onSuccess(response.body()!!.token)
+                    }
                 } else {
-                    Log.e("Repo", "Error: " + response.message())
+                    GlobalScope.launch {
+                        Log.e("Repo", "Error: " + response.raw().message())
+                        loginResponse?.onError()
+                    }
                 }
             } catch (exception: ProtocolException) {
                 Log.e("Repo", "Caught protocol exception")
+                loginUser(email, password)
+                return@launch
+            } catch (exception: SocketTimeoutException) {
+                Log.e("Repo", "Caught socket timeout exception")
             }
         }
     }

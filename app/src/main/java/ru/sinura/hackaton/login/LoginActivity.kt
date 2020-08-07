@@ -3,15 +3,29 @@ package ru.sinura.hackaton.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import ru.sinura.hackaton.R
+import ru.sinura.hackaton.main.MainActivity
 import ru.sinura.hackaton.register.RegisterActivity
 import ru.sinura.hackaton.repo.Repo
 
 class LoginActivity: Activity() {
 
     private val repo = Repo.getInstance()
+    private val responseCallback = object: LoginResponse {
+
+        override fun onSuccess(token: String) {
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        }
+
+        override fun onError() {
+            Toast.makeText(this@LoginActivity, "Error", Toast.LENGTH_LONG).show()
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +38,8 @@ class LoginActivity: Activity() {
         btRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
+
+        repo.loginResponse = responseCallback
 
         val btLogin = findViewById<Button>(R.id.btLogin)
         btLogin.setOnClickListener {
@@ -44,4 +60,8 @@ class LoginActivity: Activity() {
         }
     }
 
+    interface LoginResponse {
+        fun onSuccess(token: String)
+        fun onError()
+    }
 }
