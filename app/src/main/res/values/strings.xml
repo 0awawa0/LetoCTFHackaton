@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Hackaton</string>
+    <string name="title_news">Новости</string>
+    <string name="title_vakcinaciya">Вакцинация</string>
+    <string name="title_profile">Личный кабинет</string>
+    <string name="title_settings">Настройки</string>
+
+    <string name="fieldCantBeEmpty">Поле не может быть пустым</string>
+
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="passwordConfirmation">Подтверждение пароля</string>
+
+    <string name="fio">Ф.И.О.</string>
+    <string name="firstName">Имя</string>
+    <string name="lastName">Фамилия</string>
+    <string name="med_card">Номер медицинской карты</string>
+    <string name="passport">Пасспортные данные</string>
+    <string name="city">Город</string>
+    <string name="street">Улица</string>
+    <string name="email">Электронная почта</string>
+    <string name="phone">Телефон</string>
+    <string name="sex">Пол</string>
+    <string name="birth">Дата рождения</string>
+    <string name="doRegister">Зарегистрироваться</string>
+    <string name="register">Регистрация</string>
+    <string name="agreement">Я соглашаюсь с какой-то хуйнёй про обработку данных</string>
+    <string name="passwordsDontMatch">Пароли не совпадают</string>
+
+</resources>

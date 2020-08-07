@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:textAlignment="center"
+            android:padding="15dp"
+            android:text="@string/register"/>
+
+        <TextView
+            android:id="@+id/tvFirstName"
+            style="@style/RegisterTextView"
+            android:text="@string/firstName"/>
+
+        <EditText
+            android:id="@+id/etFirstName"
+            style="@style/RegisterEditText"/>
+
+        <TextView
+            android:id="@+id/tvLastName"
+            style="@style/RegisterTextView"
+            android:text="@string/lastName"/>
+
+        <EditText
+            android:id="@+id/etLastName"
+            style="@style/RegisterEditText"/>
+
+        <TextView
+            android:id="@+id/tvMedCard"
+            style="@style/RegisterTextView"
+            android:text="@string/med_card" />
+
+        <EditText
+            android:id="@+id/etMedCard"
+            style="@style/RegisterEditText"/>
+
+        <TextView
+            android:id="@+id/tvPassport"
+            style="@style/RegisterTextView"
+            android:text="@string/passport"/>
+
+        <EditText
+            android:id="@+id/etPassport"
+            style="@style/RegisterEditText" />
+
+        <TextView
+            android:id="@+id/tvCity"
+            style="@style/RegisterTextView"
+            android:text="@string/city"/>
+
+        <EditText
+            android:id="@+id/etCity"
+            style="@style/RegisterEditText"/>
+
+        <TextView
+            android:id="@+id/tvStreet"
+            style="@style/RegisterTextView"
+            android:text="@string/street"/>
+
+        <EditText
+            android:id="@+id/etStreet"
+            style="@style/RegisterEditText"/>
+
+        <TextView
+            android:id="@+id/tvEmail"
+            style="@style/RegisterTextView"
+            android:text="@string/email"/>
+
+        <EditText
+            android:id="@+id/etEmail"
+            style="@style/RegisterEditText"/>
+
+        <TextView
+            android:id="@+id/tvPhone"
+            style="@style/RegisterTextView"
+            android:text="@string/phone"/>
+
+        <EditText
+            android:id="@+id/etPhone"
+            style="@style/RegisterEditText"/>
+
+        <TextView
+            android:id="@+id/tvBirth"
+            style="@style/RegisterTextView"
+            android:text="@string/birth"/>
+
+        <EditText
+            android:id="@+id/etBirth"
+            style="@style/RegisterEditText"/>
+
+        <TextView
+            android:id="@+id/tvPassword"
+            style="@style/RegisterTextView"
+            android:text="@string/password"/>
+
+        <EditText
+            android:id="@+id/etPassword"
+            style="@style/RegisterEditText"
+            android:inputType="textPassword"/>
+
+        <TextView
+            android:id="@+id/tvPasswordConfirmation"
+            style="@style/RegisterTextView"
+            android:text="@string/passwordConfirmation"/>
+
+        <EditText
+            android:id="@+id/etPasswordConfirmation"
+            style="@style/RegisterEditText"
+            android:inputType="textPassword"/>
+
+        <CheckBox
+            android:id="@+id/cbAgreement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:text="@string/agreement"/>
+
+        <Button
+            android:id="@+id/btRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:background="@drawable/login_button"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:text="@string/doRegister"/>
+    </LinearLayout>
+
+</ScrollView>
