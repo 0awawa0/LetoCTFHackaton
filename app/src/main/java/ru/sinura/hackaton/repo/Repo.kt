@@ -151,9 +151,9 @@ class Repo private constructor() {
         }
     }
 
-    fun getRecep() {
+    fun getRecep(currentTime: Long) {
         GlobalScope.launch(Dispatchers.IO) {
-            val call = userApi.getRecep()
+            val call = userApi.getRecep(currentTime)
 
             try {
                 val response = call.execute()
@@ -167,7 +167,7 @@ class Repo private constructor() {
                     }
                 }
             } catch (exception: ProtocolException) {
-                getRecep()
+                getRecep(currentTime)
                 return@launch
             }
         }

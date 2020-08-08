@@ -37,5 +37,5 @@ interface UserApi {
     fun getNews(): Call<NewsModel>
 
     @GET("/recep")
-    fun getRecep(): Call<ReceptionsModel>
+    fun getRecep(@Query("current_time") currentTime: Long): Call<ReceptionsModel>
 }

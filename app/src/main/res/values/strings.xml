@@ -24,7 +24,7 @@
     <string name="birth">Дата рождения</string>
     <string name="doRegister">Зарегистрироваться</string>
     <string name="register">Регистрация</string>
-    <string name="agreement">Я соглашаюсь с какой-то хуйнёй про обработку данных</string>
+    <string name="agreement">Я согласен на обработку персональных данных в соответствии с 152 ФЗ</string>
     <string name="passwordsDontMatch">Пароли не совпадают</string>
 
     <string name="readMore">Читать в источнике…</string>

@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import ru.sinura.hackaton.R
 import ru.sinura.hackaton.repo.Repo
 import ru.sinura.hackaton.repo.retrofit.models.RecepModel
+import java.util.*
 
 class VakcinaciyaFragment : Fragment() {
 
@@ -39,7 +40,7 @@ class VakcinaciyaFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_vakcinaciya, container, false)
         repo.recepResponse = responseCallback
-        repo.getRecep()
+        repo.getRecep(Date().time / 1000 + 60 * 60 * 24)
         return root
     }
 
