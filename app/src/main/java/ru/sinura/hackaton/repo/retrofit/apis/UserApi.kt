@@ -1,14 +1,13 @@
 package ru.sinura.hackaton.repo.retrofit.apis
 
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Headers
-import retrofit2.http.POST
-import ru.sinura.hackaton.repo.retrofit.models.LoginModel
-import ru.sinura.hackaton.repo.retrofit.models.RegisterModel
+import retrofit2.http.*
+import ru.sinura.hackaton.repo.retrofit.models.*
 
 interface UserApi {
+
+    @GET("/user")
+    fun getUserData(@Query("token") token: String): Call<UserResponseModel>
 
     @FormUrlEncoded
     @Headers("Connection: keep-alive")
@@ -34,4 +33,9 @@ interface UserApi {
         @Field("password") password: String
     ): Call<LoginModel>
 
+    @GET("/news")
+    fun getNews(): Call<NewsModel>
+
+    @GET("/recep")
+    fun getRecep(): Call<ReceptionsModel>
 }

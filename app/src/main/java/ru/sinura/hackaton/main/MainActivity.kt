@@ -8,8 +8,13 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import ru.sinura.hackaton.R
+import ru.sinura.hackaton.repo.Repo
+import ru.sinura.hackaton.timer.NotificationWorker
 
 class MainActivity : AppCompatActivity() {
+
+    val repo = Repo.getInstance()
+    lateinit var token: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,15 +22,17 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.navigation_news,
-            R.id.navigation_settings,
             R.id.navigation_vakcinaciya,
             R.id.navigation_profile
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        token = intent.extras?.get("TOKEN") as String
+
+        NotificationWorker.scheduleNotification(this)
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hackaton</string>
+    <string name="app_name">Enigma</string>
     <string name="title_news">Новости</string>
     <string name="title_vakcinaciya">Вакцинация</string>
     <string name="title_profile">Личный кабинет</string>
@@ -26,5 +26,7 @@
     <string name="register">Регистрация</string>
     <string name="agreement">Я соглашаюсь с какой-то хуйнёй про обработку данных</string>
     <string name="passwordsDontMatch">Пароли не совпадают</string>
+
+    <string name="readMore">Читать в источнике…</string>
 
 </resources>

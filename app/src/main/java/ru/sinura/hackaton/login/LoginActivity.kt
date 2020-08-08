@@ -18,7 +18,9 @@ class LoginActivity: Activity() {
     private val responseCallback = object: LoginResponse {
 
         override fun onSuccess(token: String) {
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            intent.putExtra("TOKEN", token)
+            startActivity(intent)
         }
 
         override fun onError() {

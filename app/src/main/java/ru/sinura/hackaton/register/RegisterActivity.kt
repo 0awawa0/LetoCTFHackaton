@@ -1,17 +1,32 @@
 package ru.sinura.hackaton.register
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_register.*
 import ru.sinura.hackaton.R
+import ru.sinura.hackaton.login.LoginActivity
 import ru.sinura.hackaton.repo.Repo
 
 class RegisterActivity: Activity() {
 
     private val repo = Repo.getInstance()
+
+    private val responseCallback = object: RegisterResponse {
+        override fun onError() {
+            runOnUiThread {
+                Toast.makeText(this@RegisterActivity, "Error", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        override fun onSuccess() {
+            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +46,8 @@ class RegisterActivity: Activity() {
 
         val btRegister = findViewById<Button>(R.id.btRegister)
         val cbAgreement = findViewById<CheckBox>(R.id.cbAgreement)
+
+        repo.registerResponse = responseCallback
 
         cbAgreement.setOnCheckedChangeListener { _, isChecked ->
             btRegister.isEnabled = isChecked
@@ -68,5 +85,10 @@ class RegisterActivity: Activity() {
                 street = if (street.isEmpty()) "123" else street
             )
         }
+    }
+
+    interface RegisterResponse {
+        fun onSuccess()
+        fun onError()
     }
 }
